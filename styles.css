@@ -167,3 +167,127 @@ input[type="search"]{width:min(520px, 92vw);background:rgba(255,255,255,.03);bor
 .check input{margin-top:3px}
 
 .footer{border-top:1px solid var(--line);padding-top:18px;display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}
+
+
+/* =======================
+   v6 Contrast + Visuals
+   ======================= */
+:root{
+  --cardA: rgba(96,165,250,.10);
+  --cardB: rgba(167,139,250,.10);
+  --cardC: rgba(34,197,94,.10);
+  --cardD: rgba(251,191,36,.10);
+  --cardE: rgba(251,113,133,.10);
+  --glass: rgba(255,255,255,.06);
+}
+
+/* subtle pattern overlay */
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  background-image:
+    radial-gradient(circle at 18% 12%, rgba(96,165,250,.16) 0 1px, transparent 2px),
+    radial-gradient(circle at 78% 18%, rgba(167,139,250,.14) 0 1px, transparent 2px),
+    radial-gradient(circle at 32% 78%, rgba(34,197,94,.14) 0 1px, transparent 2px),
+    radial-gradient(circle at 82% 74%, rgba(251,191,36,.12) 0 1px, transparent 2px);
+  background-size: 220px 220px;
+  opacity:.55;
+}
+
+/* stronger contrast for cards/containers */
+.card{
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.06));
+  border-color: rgba(148,163,184,.25);
+}
+.day{
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.03));
+  border-color: rgba(148,163,184,.25);
+}
+.dayHead{
+  background:
+    linear-gradient(90deg, rgba(96,165,250,.22), rgba(167,139,250,.14) 45%, rgba(0,0,0,.18));
+}
+.section, .timeline, .cover, .miniMap, .vizCard{
+  border-color: rgba(148,163,184,.25);
+}
+
+/* category color accents */
+.sectionHead{
+  background: rgba(255,255,255,.04);
+}
+.sectionHead .marker.mFocus{ box-shadow: 0 0 0 6px rgba(34,197,94,.12); }
+.sectionHead .marker.mSpot{  box-shadow: 0 0 0 6px rgba(167,139,250,.12); }
+.sectionHead .marker.mMove{  box-shadow: 0 0 0 6px rgba(56,189,248,.12); }
+.sectionHead .marker.mFood{  box-shadow: 0 0 0 6px rgba(251,191,36,.12); }
+.sectionHead .marker.mBackup{box-shadow: 0 0 0 6px rgba(251,113,133,.12); }
+
+/* more "graphic" chips */
+.chip, .pill, .pill2, .badge, .tag{
+  background: rgba(255,255,255,.04);
+  border-color: rgba(148,163,184,.22);
+}
+.badgeStrong{
+  border-color: rgba(34,197,94,.55);
+}
+
+/* infographic cards */
+.kpiGrid{
+  display:grid;
+  grid-template-columns:repeat(12,1fr);
+  gap:12px;
+  margin-top:12px;
+}
+.kpi{
+  grid-column:span 12;
+  border:1px solid rgba(148,163,184,.25);
+  border-radius:18px;
+  padding:14px;
+  background: linear-gradient(135deg, var(--glass), rgba(255,255,255,.04));
+}
+@media (min-width:900px){ .kpi{ grid-column:span 4; } }
+.kpi .k{ color: var(--muted); font-size:12px; }
+.kpi .v{ font-size:22px; font-weight:900; margin-top:4px; }
+.kpi .s{ color: var(--muted); font-size:12px; margin-top:8px; }
+
+/* simple bar chart blocks */
+.chart{
+  border:1px solid rgba(148,163,184,.25);
+  border-radius:18px;
+  padding:14px;
+  background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.05));
+  margin-top:12px;
+}
+.chart h4{ margin:0 0 10px 0; font-size:14px; }
+.chartRow{
+  display:flex;
+  gap:10px;
+  align-items:center;
+  margin:10px 0;
+}
+.chartLabel{
+  width:110px;
+  color:var(--muted);
+  font-size:12px;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+.chartBar{
+  flex:1;
+  height:12px;
+  border-radius:999px;
+  border:1px solid rgba(31,42,68,.9);
+  background: rgba(255,255,255,.02);
+  overflow:hidden;
+}
+.chartFill{ height:100%; border-radius:999px; }
+.chartVal{ width:54px; text-align:right; color:var(--muted); font-size:12px; }
+
+/* high "graphic" cover svg container */
+.coverRight svg{
+  filter: drop-shadow(0 14px 22px rgba(0,0,0,.35));
+}

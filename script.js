@@ -12,6 +12,7 @@ async function load(){
 
   renderDays(data.days || [], data.enrichment || {});
   renderOverview(data.days || []);
+  renderCharts(data.days || []);
   renderTransportCards(data.transport_cards || []);
   bindSearch(); bindExpandCollapse(); bindTabs();
 }
@@ -409,6 +410,145 @@ function bindTabs(){
     });
   });
 }
+
+
+function renderCharts(days){
+  // KPIs
+  const totals = computeTripKPIs(days);
+  const kpiGrid = document.getElementById('kpiGrid');
+  if (kpiGrid){
+    kpiGrid.innerHTML = '';
+    const kpis = [
+      {k:'餐食項目', v: totals.foodCount, s:'包含早餐/午餐/晚餐/甜點等（依表內文字判斷）'},
+      {k:'高步行點', v: totals.walkCount, s:'含 🚶/階梯/坂道/神社寺院等（依標籤與文字）'},
+      {k:'可能排隊', v: totals.queueCount, s:'含 海遊館/大阪城/樂高/熱門點（依警示/文字）'}
+    ];
+    kpis.forEach(x=>{
+      const d=document.createElement('div');
+      d.className='kpi';
+      d.innerHTML = `<div class="k">${escapeHtml(x.k)}</div><div class="v">${escapeHtml(String(x.v))}</div><div class="s">${escapeHtml(x.s)}</div>`;
+      kpiGrid.appendChild(d);
+    });
+  }
+
+  // Food chart: top keywords + per-day counts
+  const food = summarizeFood(days);
+  const foodBox = document.getElementById('foodChart');
+  if (foodBox){
+    foodBox.innerHTML = `<h4>餐食彙整（依你表格文字）</h4>` +
+      chartBlock(food.byType, food.total, {
+        hint: '用於快速看「哪一天餐食安排較密集」與「餐食類型分布」。',
+        palette: 'food'
+      }) +
+      listBlock('推薦你檢查的餐食點', food.samples);
+  }
+
+  // Walk chart
+  const walk = summarizeWalking(days);
+  const walkBox = document.getElementById('walkChart');
+  if (walkBox){
+    walkBox.innerHTML = `<h4>步行/體力彙整（估算）</h4>` +
+      chartBlock(walk.byDay, walk.maxDay, {hint:'以「步行/階梯關鍵字與標籤」估算；數字越高代表越需要留緩衝。', palette:'walk'}) +
+      listBlock('高步行提醒', walk.tips);
+  }
+}
+
+function chartBlock(mapObj, maxValue, opts){
+  const keys = Object.keys(mapObj || {});
+  if (!keys.length) return `<div class="muted">（沒有足夠資料可產生圖表）</div>`;
+  const rows = keys.map(k=>{
+    const v = mapObj[k] || 0;
+    const pct = maxValue ? Math.round((v / maxValue) * 100) : 0;
+    const cls = (opts && opts.palette==='food') ? 'fillFood' : 'fillMove';
+    return `<div class="chartRow">
+      <div class="chartLabel">${escapeHtml(k)}</div>
+      <div class="chartBar"><div class="chartFill ${cls}" style="width:${pct}%"></div></div>
+      <div class="chartVal">${escapeHtml(String(v))}</div>
+    </div>`;
+  }).join('');
+  const hint = (opts && opts.hint) ? `<div class="muted" style="margin:4px 0 8px 0">${escapeHtml(opts.hint)}</div>` : '';
+  return hint + rows;
+}
+
+function listBlock(title, items){
+  if (!items || !items.length) return '';
+  return `<div style="margin-top:12px">
+    <div class="muted" style="font-weight:800;margin-bottom:6px">${escapeHtml(title)}</div>
+    <ul class="bullets">${items.map(x=>`<li>${escapeHtml(x)}</li>`).join('')}</ul>
+  </div>`;
+}
+
+function computeTripKPIs(days){
+  let foodCount=0, walkCount=0, queueCount=0;
+  days.forEach(d=>{
+    (d.items||[]).forEach(it=>{
+      if (isFood(it)) foodCount++;
+      if (isWalkHeavy(it)) walkCount++;
+      if (isQueueLikely(it, d)) queueCount++;
+    });
+  });
+  return {foodCount, walkCount, queueCount};
+}
+
+function isFood(it){
+  const t=((it.title||'')+' '+(it.note||'')).toLowerCase();
+  const kw=['早餐','午餐','晚餐','拉麵','壽司','咖啡','茶','甜點','燒肉','居酒屋','麵','吃到飽','迴轉'];
+  return (it.bucket==='餐食') || kw.some(k=>t.includes(k));
+}
+
+function isWalkHeavy(it){
+  const t=(it.title||'')+' '+(it.note||'');
+  const tagStr=(it.tags||[]).join(' ');
+  const kw=['步行','階','階梯','坂','鳥居','寺','神社','清水','稻荷','東山'];
+  return tagStr.includes('🚶') || tagStr.includes('階梯') || kw.some(k=>t.includes(k));
+}
+
+function isQueueLikely(it, day){
+  const t=(it.title||'')+' '+(it.note||'');
+  const kw=['海遊館','大阪城','樂高','排隊','熱門'];
+  const dayWarn = (day.warnings||[]).some(w => String(w.title||'').includes('排隊'));
+  return dayWarn || kw.some(k=>t.includes(k));
+}
+
+function summarizeFood(days){
+  const byType={'早餐/早午餐':0,'午餐':0,'晚餐':0,'甜點/咖啡':0,'其他餐食':0};
+  const samples=[];
+  days.forEach(d=>{
+    (d.items||[]).forEach(it=>{
+      if (!isFood(it)) return;
+      const t=(it.title||'')+' '+(it.note||'');
+      const lower=t.toLowerCase();
+      if (t.includes('早餐')) byType['早餐/早午餐']++;
+      else if (t.includes('午餐')) byType['午餐']++;
+      else if (t.includes('晚餐')) byType['晚餐']++;
+      else if (t.includes('咖啡') || t.includes('茶') || t.includes('甜點')) byType['甜點/咖啡']++;
+      else byType['其他餐食']++;
+      if (it.title && samples.length<10) samples.push(`${d.day_label}：${it.title}`);
+    });
+  });
+  const total = Math.max(...Object.values(byType));
+  return {byType, total, samples};
+}
+
+function summarizeWalking(days){
+  const byDay={};
+  const tips=[];
+  let maxDay=0;
+  days.forEach(d=>{
+    let n=0;
+    (d.items||[]).forEach(it=>{ if (isWalkHeavy(it)) n++; });
+    byDay[d.day_label]=n;
+    maxDay=Math.max(maxDay,n);
+    if ((d.warnings||[]).some(w=>String(w.title||'').includes('步行')) && tips.length<8){
+      tips.push(`${d.day_label}：步行/階梯偏多，建議背巾或留休息點。`);
+    }
+  });
+  if (!tips.length){
+    tips.push('若推車同行：東山/稻荷等路段建議改背巾或只走前段。');
+  }
+  return {byDay, maxDay, tips};
+}
+
 
 function escapeHtml(str){
   return String(str||'')
