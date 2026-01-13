@@ -9,17 +9,21 @@
 <body>
   <header class="container">
     <div class="hero">
-      <div>
-        <h1 id="title">京阪親子行程（2大2小）</h1>
-        <p class="subtitle" id="subtitle">由試算表整理與補強：交通、時間、親子友善與風險點</p>
-        <div class="meta">
-          <span id="generated"></span>
-          <span class="pill">可直接部署的靜態網站</span>
+      <div class="heroTop">
+        <div>
+          <h1 id="title">京阪親子行程（2大2小）</h1>
+          <p class="subtitle" id="subtitle">Level 2：每日分層（重點/順遊/交通/餐食/備案）＋視覺化警示</p>
+          <div class="meta">
+            <span id="generated"></span>
+            <span class="pill">GitHub Pages 靜態網站</span>
+          </div>
         </div>
+        <div class="heroStats" id="heroStats"></div>
       </div>
+
       <nav class="tabs" aria-label="頁籤">
-        <button class="tab active" data-tab="overview">總覽與建議</button>
-        <button class="tab" data-tab="itinerary">每日行程</button>
+        <button class="tab active" data-tab="itinerary">每日行程</button>
+        <button class="tab" data-tab="overview">總覽與提醒</button>
         <button class="tab" data-tab="transport">交通票券</button>
         <button class="tab" data-tab="checklist">出發前檢查</button>
       </nav>
@@ -27,70 +31,76 @@
   </header>
 
   <main class="container">
-    <section id="overview" class="panel active">
-      <h2>總覽與關鍵建議</h2>
-      <div class="grid">
-        <article class="card">
-          <h3>節奏評估</h3>
-          <ul class="bullets" id="pace">
-            <!-- filled by JS -->
-          </ul>
-        </article>
-        <article class="card">
-          <h3>親子友善與風險點</h3>
-          <ul class="bullets" id="risks">
-            <!-- filled by JS -->
-          </ul>
-        </article>
-        <article class="card">
-          <h3>建議調整（不更動大方向）</h3>
-          <ul class="bullets" id="tweaks">
-            <!-- filled by JS -->
-          </ul>
-        </article>
-      </div>
-
-      <article class="card">
-        <h3>當天執行的小技巧</h3>
-        <div class="tips" id="opsTips"></div>
-      </article>
-
-      <p class="footnote">
-        註：票價、開放時間與活動可能因季節或臨時公告調整；請以各景點官方公告為準。
-      </p>
-    </section>
-
-    <section id="itinerary" class="panel">
+    <section id="itinerary" class="panel active">
       <div class="row">
         <h2>每日行程</h2>
         <div class="controls">
-          <input id="search" type="search" placeholder="搜尋景點或備註（例如：清水、海遊館、拉麵）" />
+          <input id="search" type="search" placeholder="搜尋（例如：清水、海遊館、壽司、巴士）" />
           <button id="expandAll" class="ghost">全部展開</button>
           <button id="collapseAll" class="ghost">全部收合</button>
+        </div>
+      </div>
+      <div class="legend card">
+        <div class="legendGrid">
+          <div class="legendItem"><span class="dot dotFocus"></span><strong>今日重點</strong><span class="muted">不建議刪</span></div>
+          <div class="legendItem"><span class="dot dotSpot"></span><strong>順遊景點</strong><span class="muted">視體力增減</span></div>
+          <div class="legendItem"><span class="dot dotMove"></span><strong>交通/行程說明</strong><span class="muted">控時關鍵</span></div>
+          <div class="legendItem"><span class="dot dotFood"></span><strong>餐食</strong><span class="muted">親子優先可訂位</span></div>
+          <div class="legendItem"><span class="dot dotBackup"></span><strong>備案/警示</strong><span class="muted">排隊/雨天/超時</span></div>
         </div>
       </div>
       <div id="days"></div>
     </section>
 
+    <section id="overview" class="panel">
+      <h2>總覽與提醒</h2>
+      <div class="grid">
+        <article class="card">
+          <h3>節奏評估</h3>
+          <ul class="bullets" id="pace"></ul>
+        </article>
+        <article class="card">
+          <h3>親子風險點</h3>
+          <ul class="bullets" id="risks"></ul>
+        </article>
+        <article class="card">
+          <h3>建議調整（最小改動）</h3>
+          <ul class="bullets" id="tweaks"></ul>
+        </article>
+      </div>
+      <article class="card">
+        <h3>執行技巧</h3>
+        <div class="tips" id="opsTips"></div>
+      </article>
+      <p class="footnote">註：票價、開放時間與活動可能因季節或臨時公告調整；請以官方公告為準。</p>
+    </section>
+
     <section id="transport" class="panel">
       <h2>交通票券與卡片</h2>
       <div class="card">
-        <p class="muted">以下為原表資訊整理（包含連結），並補上使用情境提示。</p>
+        <p class="muted">以下為原表資訊整理（含連結），並補上使用情境提示。</p>
         <div id="transportCards"></div>
       </div>
       <div class="grid">
         <article class="card">
           <h3>京都市區移動</h3>
           <ul class="bullets">
-            <li>清水寺、祇園一帶：公車方便，但尖峰可能塞車；帶小孩建議提早出門。</li>
-            <li>若連續跑多點，可評估「公車＋地鐵一日券」；若行程以景點步行為主，單次刷卡反而彈性更高。</li>
+            <li>東山（清水寺/祇園）公車方便但尖峰塞車；親子建議早出門。</li>
+            <li>若一天會搭很多次，評估公車＋地鐵一日券；若景點以步行為主，刷卡更彈性。</li>
           </ul>
         </article>
         <article class="card">
           <h3>大阪市區移動</h3>
           <ul class="bullets">
-            <li>以地鐵為主（御堂筋線、中央線常用）；天保山（海遊館、樂高）走中央線到大阪港站。</li>
-            <li>若你們確定要跑多個「需門票」景點，可比較大阪周遊卡是否划算（以你表內清單做對照）。</li>
+            <li>以地鐵為主；天保山（海遊館/樂高）多走中央線到大阪港站。</li>
+            <li>若確定跑多個「需門票」景點，再比較大阪周遊卡是否划算。</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>親子控時建議</h3>
+          <ul class="bullets">
+            <li>每 90 分鐘安排休息/點心；下午保留室內或商圈，降低情緒成本。</li>
+            <li>若遇排隊>30分鐘，直接啟用備案或調整順序。</li>
           </ul>
         </article>
       </div>
@@ -108,8 +118,8 @@
         </article>
         <article class="card">
           <h3>親子必備</h3>
-          <label class="check"><input type="checkbox"> 輕便推車或背巾（清水寺/伏見稻荷階梯多）</label>
-          <label class="check"><input type="checkbox"> 保冷袋＋保冷劑（依原表）</label>
+          <label class="check"><input type="checkbox"> 輕便推車或背巾（階梯多路段）</label>
+          <label class="check"><input type="checkbox"> 保冷袋＋保冷劑</label>
           <label class="check"><input type="checkbox"> 零食、水壺、濕紙巾、替換衣物</label>
           <label class="check"><input type="checkbox"> 兒童常用藥（退燒、止瀉、過敏）</label>
         </article>
@@ -117,8 +127,8 @@
           <h3>行程執行</h3>
           <label class="check"><input type="checkbox"> 住宿地址與入住資訊（離線備份）</label>
           <label class="check"><input type="checkbox"> 交通票券（ICOCA / 其他）</label>
-          <label class="check"><input type="checkbox"> 必去景點的「最晚入場時間」確認</label>
-          <label class="check"><input type="checkbox"> 雨備方案（海遊館/樂高等室內點）</label>
+          <label class="check"><input type="checkbox"> 景點最晚入場時間確認</label>
+          <label class="check"><input type="checkbox"> 雨備方案（室內點）</label>
         </article>
       </div>
     </section>
@@ -126,8 +136,8 @@
 
   <footer class="container footer">
     <div>
-      <strong>使用方式</strong>
-      <p class="muted">這是一個純靜態網站：把整個資料夾上傳到 GitHub Pages、Cloudflare Pages 或任何靜態主機即可發布。</p>
+      <strong>更新方式</strong>
+      <p class="muted">若要更新行程：修改 data.json 後重新上傳覆蓋即可。</p>
     </div>
     <div class="muted">© 2026</div>
   </footer>
