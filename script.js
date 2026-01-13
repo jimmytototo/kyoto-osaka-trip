@@ -14,6 +14,7 @@ async function load(){
   renderOverview(data.days || []);
   renderCharts(data.days || []);
   renderTransportCards(data.transport_cards || []);
+  renderKids(data.days || []);
   bindSearch(); bindExpandCollapse(); bindTabs();
 }
 
@@ -571,3 +572,29 @@ load().catch(err=>{
   console.error(err);
   document.body.insertAdjacentHTML('afterbegin','<p style="color:#fff;padding:16px">資料載入失敗，請確認 data.json 與檔案路徑。</p>');
 });
+
+
+function renderKids(days){
+  const box=document.getElementById('kidTasks');
+  if (!box) return;
+  const tasks=[];
+  days.forEach(d=>{
+    const dayTasks=[];
+    (d.items||[]).forEach(it=>{
+      if ((it.kid_tags||[]).length){
+        if (it.kid_tags.includes("🧠 知識型")) dayTasks.push(`找出一個你覺得最厲害的知識：${it.title}`);
+        if (it.kid_tags.includes("🎮 體驗型")) dayTasks.push(`完成體驗並說出最好玩的一件事：${it.title}`);
+        if (it.kid_tags.includes("🛍️ 自主型")) dayTasks.push(`自己決定一樣想買或想吃的東西：${it.title}`);
+      }
+    });
+    if (dayTasks.length){
+      tasks.push({day:d.day_label, tasks: dayTasks.slice(0,3)});
+    }
+  });
+  box.innerHTML = tasks.map(t=>`
+    <div class="card" style="margin-top:12px">
+      <h3>${escapeHtml(t.day)}</h3>
+      ${t.tasks.map(x=>`<label class="check"><input type="checkbox"> ${escapeHtml(x)}</label>`).join('')}
+    </div>
+  `).join('');
+}

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>KYOTO · OSAKA · FAMILY TRIP </title>
+  <title>京阪親子行程（2大2小）</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -12,8 +12,8 @@
       <div class="heroBanner">
         <div class="bannerLeft">
           <div class="badgeTop">KYOTO · OSAKA · FAMILY TRIP</div>
-          <h1 id="title">KYOTO · OSAKA · FAMILY TRIP</h1>
-          <p class="subtitle" id="subtitle">親子友善版本</p>
+          <h1 id="title">京阪親子行程（2大2小）</h1>
+          <p class="subtitle" id="subtitle">親子友善版本：每日時間軸＋分類＋警示＋路線視覺</p>
           <div class="meta">
             <span id="generated"></span>
             <span class="pill">GitHub Pages</span>
@@ -33,7 +33,7 @@
               <div class="routeLine"></div>
               <div class="routeStop">大阪</div>
             </div>
-            <div class="miniHint"></div>
+            <div class="miniHint">每日卡片內有「封面插圖」與「路線視覺」</div>
           </div>
         </div>
       </div>
@@ -43,6 +43,7 @@
         <button class="tab" data-tab="overview">整合建議</button>
         <button class="tab" data-tab="transport">交通票券</button>
         <button class="tab" data-tab="checklist">檢查清單</button>
+        <button class="tab" data-tab="kids">孩子任務</button>
       </nav>
     </div>
   </header>
@@ -50,7 +51,7 @@
   <main class="container">
     <section id="itinerary" class="panel active">
       <div class="row">
-        <h2>每日行程</h2>
+        <h2>每日行程（封面插圖 + 路線視覺 + 時間軸）</h2>
         <div class="controls">
           <input id="search" type="search" placeholder="搜尋（清水、海遊館、壽司、巴士…）" />
           <button id="expandAll" class="ghost">全部展開</button>
@@ -140,6 +141,15 @@
         </article>
       </div>
     </section>
+  
+    <section id="kids" class="panel">
+      <h2>孩子任務清單（國小高年級）</h2>
+      <div class="card">
+        <p class="muted">每天完成 1–2 個即可，完成「今日任務」就是成功。</p>
+        <div id="kidTasks"></div>
+      </div>
+    </section>
+
   </main>
 
   <footer class="container footer">
