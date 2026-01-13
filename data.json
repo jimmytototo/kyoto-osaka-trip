@@ -1,6 +1,6 @@
 {
   "title": "京阪親子行程（2大2小）",
-  "subtitle": "Level 2：每日分層（重點/順遊/交通/餐食/備案）＋視覺化警示",
+  "subtitle": "Level 2+：分層分類＋警示＋時間軸視覺化（更不表格）",
   "generated_on": "2026-01-13",
   "days": [
     {
@@ -12,79 +12,118 @@
           "title": "關西機場",
           "note": "13:30-16:55",
           "bucket": "其他",
-          "tags": []
+          "icon": "📝",
+          "tags": [],
+          "area": "關西機場",
+          "time_of_day": "行程"
         },
         {
           "title": "HARUKA特急列車",
           "note": "用ICOCA需額外購買特快列車票券，再刷ICOCA卡進出站",
           "bucket": "行程說明/交通",
-          "tags": []
+          "icon": "🚌",
+          "tags": [],
+          "area": "",
+          "time_of_day": "行程"
         },
         {
           "title": "車程75分",
           "note": "https://www.kkday.com/zh-tw/product/18940-kansai-airport-haruka-ticket-japan?cid=18191",
           "bucket": "行程說明/交通",
-          "tags": []
+          "icon": "🚌",
+          "tags": [],
+          "area": "",
+          "time_of_day": "行程"
         },
         {
           "title": "京都車站",
           "note": "京都綜合觀光案內所(2F南北自由通路)，裡面有會講英文、中文的服務人員，可以購買一般的市巴士一日券等交通優惠券",
           "bucket": "行程說明/交通",
-          "tags": []
+          "icon": "🚌",
+          "tags": [],
+          "area": "京都車站",
+          "time_of_day": "行程"
         },
         {
           "title": "",
           "note": "JR中央口出口右手邊的巴士服務中心買巴士地鐵券(一日券成人1100、兒童550)或D2公車道走到底自動購票機買",
           "bucket": "行程說明/交通",
-          "tags": []
+          "icon": "🚌",
+          "tags": [],
+          "area": "",
+          "time_of_day": "行程"
         },
         {
           "title": "Daiwa Roynet Hotel",
           "note": "位於京都車站後站東側，往返前後站走Porta地下街",
           "bucket": "行程說明/交通",
-          "tags": []
+          "icon": "🚌",
+          "tags": [],
+          "area": "京都車站",
+          "time_of_day": "行程"
         },
         {
           "title": "晚餐",
           "note": "後站飯店旁「AVANTI購物商場」(唐吉訶德、GU、ABC MART、Seria、長次郎CHOJIRO廻転寿司、風來坊、千房大阪燒、おらが蕎麦蕎麥麵）",
           "bucket": "行程說明/交通",
-          "tags": []
+          "icon": "🚌",
+          "tags": [],
+          "area": "",
+          "time_of_day": "晚上"
         },
         {
           "title": "",
           "note": "但馬屋PREMIUM壽喜燒 京都駅八条口店 (有豬肉、可套餐或吃到飽)",
           "bucket": "行程說明/交通",
-          "tags": []
+          "icon": "🚌",
+          "tags": [],
+          "area": "",
+          "time_of_day": "行程"
         },
         {
           "title": "",
           "note": "車站伊勢丹百貨10樓「おもてなし小路(拉麵小路)」內寿しのむさし(壽司武藏)  迴轉壽司(有中文英文菜單，一盤160円起)，有空中走廊可以看京都塔",
           "bucket": "行程說明/交通",
-          "tags": []
+          "icon": "🚌",
+          "tags": [],
+          "area": "",
+          "time_of_day": "行程"
         },
         {
           "title": "",
           "note": "寿しのむさし(壽司武藏) 八條口店(迴轉壽司，有中文英文菜單，一盤160円起)",
           "bucket": "行程說明/交通",
-          "tags": []
+          "icon": "🚌",
+          "tags": [],
+          "area": "",
+          "time_of_day": "行程"
         },
         {
           "title": "",
           "note": "Sir Thomas Lipton 京都Porta店",
           "bucket": "行程說明/交通",
-          "tags": []
+          "icon": "🚌",
+          "tags": [],
+          "area": "",
+          "time_of_day": "行程"
         },
         {
           "title": "",
           "note": "金澤美味壽司 京都站Porta店",
           "bucket": "行程說明/交通",
-          "tags": []
+          "icon": "🚌",
+          "tags": [],
+          "area": "",
+          "time_of_day": "行程"
         },
         {
           "title": "買隔天早餐",
           "note": "進進堂 JR京都站前店(事先買好早餐)",
           "bucket": "行程說明/交通",
-          "tags": []
+          "icon": "🚌",
+          "tags": [],
+          "area": "",
+          "time_of_day": "上午"
         }
       ]
     },
@@ -97,8 +136,8 @@
       "warnings": [
         {
           "level": "⚠️",
-          "title": "步行/階梯較多",
-          "detail": "建議背巾或輕便推車，並預留休息點與點心。"
+          "title": "步行/階梯偏多",
+          "detail": "推車成本高；建議背巾或輕便推車，並預留休息與點心。"
         }
       ],
       "items": [
@@ -106,186 +145,276 @@
           "title": "Daiwa Roynet Hotel",
           "note": "",
           "bucket": "其他",
-          "tags": []
+          "icon": "📝",
+          "tags": [],
+          "area": "",
+          "time_of_day": "行程"
         },
         {
           "title": "市巴士206車程35分",
           "note": "搭到「清水道」站下走清水坂抵達",
           "bucket": "行程說明/交通",
-          "tags": []
+          "icon": "🚌",
+          "tags": [],
+          "area": "清水",
+          "time_of_day": "行程"
         },
         {
           "title": "清水寺(或下午去)",
           "note": "8點前到最好，清水舞台(門票成人500、小學生200)、奧之院(門票，柯南小蘭合拍地)",
           "bucket": "景點",
+          "icon": "📍",
           "tags": [
             "🏯文化",
             "🚶步行多",
             "⚠️階梯坡道",
             "🕒人潮高"
-          ]
+          ],
+          "area": "京都・東山",
+          "time_of_day": "行程"
         },
         {
           "title": "清水坂",
           "note": "本家西尾八ッ橋(皮偏硬)、元祖八ッ橋 西尾(皮軟)、京都北山 MALEBRANCHE(抹茶餅乾)、京都茗果 京ばあむ 年輪蛋糕、伊藤久右衛門、八ツ橋しゅ泡芙、HISAYA CAFE的栗子冰淇淋",
           "bucket": "餐食",
-          "tags": []
+          "icon": "🍜",
+          "tags": [],
+          "area": "清水",
+          "time_of_day": "行程"
         },
         {
           "title": "My Only Fragrance KIYOMIZU",
           "note": "拍攝法觀寺（八坂之塔）的經典構圖角度之一",
           "bucket": "其他",
-          "tags": []
+          "icon": "📝",
+          "tags": [],
+          "area": "",
+          "time_of_day": "行程"
         },
         {
           "title": "音羽瀑布",
           "note": "分為三股水流，分別象徵「學業成就、健康長壽、戀愛順利」，參拜者可依心願選擇其中一股喝下，只可擇一，否則願望難以實現。",
           "bucket": "其他",
-          "tags": []
+          "icon": "📝",
+          "tags": [],
+          "area": "",
+          "time_of_day": "行程"
         },
         {
           "title": "三年坂",
           "note": "七味家本舖(調味品店)、よーじや(化妝品)、Maccha House 抹茶館(必點抹茶提拉米蘇、聖代)",
           "bucket": "餐食",
-          "tags": []
+          "icon": "🍜",
+          "tags": [],
+          "area": "",
+          "time_of_day": "行程"
         },
         {
           "title": "二年坂",
           "note": "星巴克(塌塌米座位)",
           "bucket": "其他",
-          "tags": []
+          "icon": "📝",
+          "tags": [],
+          "area": "",
+          "time_of_day": "行程"
         },
         {
           "title": "走路約4分",
           "note": "",
           "bucket": "其他",
-          "tags": []
+          "icon": "📝",
+          "tags": [],
+          "area": "",
+          "time_of_day": "行程"
         },
         {
           "title": "八坂庚申堂",
           "note": "くくり猿 (許願猴)、 限定猴子土鈴、猴子造型動物籤",
           "bucket": "其他",
-          "tags": []
+          "icon": "📝",
+          "tags": [],
+          "area": "",
+          "time_of_day": "行程"
         },
         {
           "title": "走路8分",
           "note": "",
           "bucket": "其他",
-          "tags": []
+          "icon": "📝",
+          "tags": [],
+          "area": "",
+          "time_of_day": "行程"
         },
         {
           "title": "八坂神社",
           "note": "",
           "bucket": "景點",
-          "tags": []
+          "icon": "📍",
+          "tags": [],
+          "area": "",
+          "time_of_day": "行程"
         },
         {
           "title": "祇園白川筋、花見小路",
           "note": "祇園辻利買抹茶伴手禮、壹錢洋食本店(大阪燒始祖)",
           "bucket": "餐食",
-          "tags": []
+          "icon": "🍜",
+          "tags": [],
+          "area": "祇園",
+          "time_of_day": "行程"
         },
         {
           "title": "晚餐-河原町商圈",
           "note": "錦市場(市場內規定不能邊走邊吃)，營業時間12:00 -17:00：三木雞卵玉子燒、田中雞卵、鮮魚木村、博士章魚燒(カリカリ博士)",
           "bucket": "餐食",
-          "tags": []
+          "icon": "🍜",
+          "tags": [],
+          "area": "河原町",
+          "time_of_day": "晚上"
         },
         {
           "title": "",
           "note": "迪士尼商店 京都四條河原町",
           "bucket": "行程說明/交通",
-          "tags": []
+          "icon": "🚌",
+          "tags": [],
+          "area": "河原町",
+          "time_of_day": "行程"
         },
         {
           "title": "",
           "note": "新京極商店街，可吃名代とんかつ かつくら（豬排)、",
           "bucket": "行程說明/交通",
-          "tags": []
+          "icon": "🚌",
+          "tags": [],
+          "area": "",
+          "time_of_day": "行程"
         },
         {
           "title": "",
           "note": "寺町通商店街",
           "bucket": "行程說明/交通",
-          "tags": []
+          "icon": "🚌",
+          "tags": [],
+          "area": "",
+          "time_of_day": "行程"
         },
         {
           "title": "",
           "note": "藤井大丸百貨：賣日用雜貨、超市、男女服飾",
           "bucket": "行程說明/交通",
-          "tags": []
+          "icon": "🚌",
+          "tags": [],
+          "area": "",
+          "time_of_day": "行程"
         },
         {
           "title": "",
           "note": "大丸京都店：老牌百貨店",
           "bucket": "行程說明/交通",
-          "tags": []
+          "icon": "🚌",
+          "tags": [],
+          "area": "",
+          "time_of_day": "行程"
         },
         {
           "title": "",
           "note": "高島屋S.C.：任天堂京都店(7F)、丸久小山園 高島屋京都店(B1)",
           "bucket": "行程說明/交通",
-          "tags": []
+          "icon": "🚌",
+          "tags": [],
+          "area": "",
+          "time_of_day": "行程"
         },
         {
           "title": "",
           "note": "河原町オーパ(OPA)：開到晚上9點，有鬼塚虎（外國人有5%+退稅10%）、少女服飾品牌、百元商品店、BOOK OFF二手書店",
           "bucket": "行程說明/交通",
-          "tags": []
+          "icon": "🚌",
+          "tags": [],
+          "area": "河原町",
+          "time_of_day": "行程"
         },
         {
           "title": "",
           "note": "mina百貨京都店：UNIQLO、LOFT、GU",
           "bucket": "行程說明/交通",
-          "tags": []
+          "icon": "🚌",
+          "tags": [],
+          "area": "",
+          "time_of_day": "行程"
         },
         {
           "title": "",
           "note": "愛電王",
           "bucket": "行程說明/交通",
-          "tags": []
+          "icon": "🚌",
+          "tags": [],
+          "area": "",
+          "time_of_day": "行程"
         },
         {
           "title": "",
           "note": "唐吉軻德、大創 京都四條通店、HANDS 京都店",
           "bucket": "行程說明/交通",
-          "tags": []
+          "icon": "🚌",
+          "tags": [],
+          "area": "",
+          "time_of_day": "行程"
         },
         {
           "title": "",
           "note": "松本清藥妝、SUNDRUG(尚都樂客)、ココカラファイン(Cocokara Fine)、OS DRUG、スギ藥局",
           "bucket": "行程說明/交通",
-          "tags": []
+          "icon": "🚌",
+          "tags": [],
+          "area": "",
+          "time_of_day": "行程"
         },
         {
           "title": "",
           "note": "迪士尼商店 京都四條河原町",
           "bucket": "行程說明/交通",
-          "tags": []
+          "icon": "🚌",
+          "tags": [],
+          "area": "河原町",
+          "time_of_day": "行程"
         },
         {
           "title": "",
           "note": "H&M京都店：全日本最大間",
           "bucket": "行程說明/交通",
-          "tags": []
+          "icon": "🚌",
+          "tags": [],
+          "area": "",
+          "time_of_day": "行程"
         },
         {
           "title": "",
           "note": "LAQUE 四条烏丸",
           "bucket": "行程說明/交通",
-          "tags": []
+          "icon": "🚌",
+          "tags": [],
+          "area": "",
+          "time_of_day": "行程"
         },
         {
           "title": "",
           "note": "業務超市",
           "bucket": "行程說明/交通",
-          "tags": []
+          "icon": "🚌",
+          "tags": [],
+          "area": "",
+          "time_of_day": "行程"
         },
         {
           "title": "",
           "note": "shokudo days白色蛋包飯",
           "bucket": "行程說明/交通",
-          "tags": []
+          "icon": "🚌",
+          "tags": [],
+          "area": "",
+          "time_of_day": "行程"
         }
       ]
     },
@@ -298,12 +427,12 @@
         {
           "level": "⚠️",
           "title": "跨區過多，容易超時",
-          "detail": "當天包含多個城市/區域移動，親子節奏建議保留可刪點，必要時二選一。"
+          "detail": "當天跨 3+ 區域移動，親子節奏請保留可刪點並優先重點景點。"
         },
         {
           "level": "⚠️",
-          "title": "步行/階梯較多",
-          "detail": "建議背巾或輕便推車，並預留休息點與點心。"
+          "title": "步行/階梯偏多",
+          "detail": "推車成本高；建議背巾或輕便推車，並預留休息與點心。"
         }
       ],
       "items": [
@@ -311,174 +440,258 @@
           "title": "早餐",
           "note": "Sir Thomas Lipton 京都Porta店",
           "bucket": "餐食",
-          "tags": []
+          "icon": "🍜",
+          "tags": [],
+          "area": "",
+          "time_of_day": "上午"
         },
         {
           "title": "JR奈良線 普通車 10分",
           "note": "京都車站2樓JR奈良線(8-10號月台方向)，9或10月台搭普通車到稻禾車站",
           "bucket": "行程說明/交通",
-          "tags": []
+          "icon": "🚌",
+          "tags": [],
+          "area": "京都車站",
+          "time_of_day": "行程"
         },
         {
           "title": "伏見稻禾大社",
           "note": "7點前到最好，參拜過後建議吃份豆皮壽司招好運，推祢ざめ家(Nezameya)，可以買御朱印冊2000円+印500円",
           "bucket": "餐食",
+          "icon": "🍜",
           "tags": [
             "⛩️神社",
             "🚶步行多",
             "⚠️階梯多",
             "🕒人潮高"
-          ]
+          ],
+          "area": "京都・伏見",
+          "time_of_day": "行程"
         },
         {
           "title": "奧社奉拜所",
           "note": "「輕重石」，許願後拿起來比想像中還輕願望會實現",
           "bucket": "其他",
-          "tags": []
+          "icon": "📝",
+          "tags": [],
+          "area": "",
+          "time_of_day": "行程"
         },
         {
           "title": "午餐-伏見稻禾餐道",
           "note": "SALMON NOODLE、Kanoko(可乃古)蕎麥麵店、近江家蓋飯、吉依卡哇商店",
           "bucket": "餐食",
-          "tags": []
+          "icon": "🍜",
+          "tags": [],
+          "area": "伏見",
+          "time_of_day": "中午"
         },
         {
           "title": "JR奈良線28分(每15分一班)",
           "note": "稻禾車站→小倉站",
           "bucket": "行程說明/交通",
-          "tags": []
+          "icon": "🚌",
+          "tags": [],
+          "area": "奈良",
+          "time_of_day": "行程"
         },
         {
           "title": "宇治任天堂博物館",
           "note": "",
           "bucket": "景點",
-          "tags": []
+          "icon": "📍",
+          "tags": [],
+          "area": "宇治",
+          "time_of_day": "行程"
         },
         {
           "title": "京阪巴士64號13分",
           "note": "博物館外搭車到JR宇治站",
           "bucket": "行程說明/交通",
-          "tags": []
+          "icon": "🚌",
+          "tags": [],
+          "area": "宇治",
+          "time_of_day": "行程"
         },
         {
           "title": "JR奈良線15分",
           "note": "",
           "bucket": "行程說明/交通",
-          "tags": []
+          "icon": "🚌",
+          "tags": [],
+          "area": "奈良",
+          "time_of_day": "行程"
         },
         {
           "title": "宇治橋通商店街",
           "note": "辻利、伊藤久右衛門、中村藤吉(先拿號碼牌掃QR Code加Line等候位，可以吃限定的抹茶巴菲1650円，再買「抹茶豆菓子」、「抹茶凍」（生茶ゼリイ）、丸十聖代（まるとパフェ）)、通園、Mog Mog 烘培坊、APPRO超市",
           "bucket": "餐食",
-          "tags": []
+          "icon": "🍜",
+          "tags": [],
+          "area": "宇治",
+          "time_of_day": "行程"
         },
         {
           "title": "JR奈良線轉京阪電車(KH)",
           "note": "JR到「東福寺」站轉搭電車京阪本線到「祇園四條」站下",
           "bucket": "行程說明/交通",
-          "tags": []
+          "icon": "🚌",
+          "tags": [],
+          "area": "祇園",
+          "time_of_day": "行程"
         },
         {
           "title": "晚餐-河原町商圈",
           "note": "錦市場(市場內規定不能邊走邊吃)，營業時間12:00 -17:00：三木雞卵玉子燒、田中雞卵、鮮魚木村、博士章魚燒(カリカリ博士)",
           "bucket": "餐食",
-          "tags": []
+          "icon": "🍜",
+          "tags": [],
+          "area": "河原町",
+          "time_of_day": "晚上"
         },
         {
           "title": "",
           "note": "迪士尼商店 京都四條河原町",
           "bucket": "行程說明/交通",
-          "tags": []
+          "icon": "🚌",
+          "tags": [],
+          "area": "河原町",
+          "time_of_day": "行程"
         },
         {
           "title": "",
           "note": "新京極商店街，可吃名代とんかつ かつくら（豬排)、",
           "bucket": "行程說明/交通",
-          "tags": []
+          "icon": "🚌",
+          "tags": [],
+          "area": "",
+          "time_of_day": "行程"
         },
         {
           "title": "",
           "note": "寺町通商店街",
           "bucket": "行程說明/交通",
-          "tags": []
+          "icon": "🚌",
+          "tags": [],
+          "area": "",
+          "time_of_day": "行程"
         },
         {
           "title": "",
           "note": "藤井大丸百貨：賣日用雜貨、超市、男女服飾",
           "bucket": "行程說明/交通",
-          "tags": []
+          "icon": "🚌",
+          "tags": [],
+          "area": "",
+          "time_of_day": "行程"
         },
         {
           "title": "",
           "note": "大丸京都店：老牌百貨店",
           "bucket": "行程說明/交通",
-          "tags": []
+          "icon": "🚌",
+          "tags": [],
+          "area": "",
+          "time_of_day": "行程"
         },
         {
           "title": "",
           "note": "高島屋S.C.：任天堂京都店(7F)、丸久小山園 高島屋京都店(B1)",
           "bucket": "行程說明/交通",
-          "tags": []
+          "icon": "🚌",
+          "tags": [],
+          "area": "",
+          "time_of_day": "行程"
         },
         {
           "title": "",
           "note": "河原町オーパ(OPA)：開到晚上9點，有鬼塚虎（外國人有5%+退稅10%）、少女服飾品牌、百元商品店、BOOK OFF二手書店",
           "bucket": "行程說明/交通",
-          "tags": []
+          "icon": "🚌",
+          "tags": [],
+          "area": "河原町",
+          "time_of_day": "行程"
         },
         {
           "title": "",
           "note": "mina百貨京都店：UNIQLO、LOFT、GU",
           "bucket": "行程說明/交通",
-          "tags": []
+          "icon": "🚌",
+          "tags": [],
+          "area": "",
+          "time_of_day": "行程"
         },
         {
           "title": "",
           "note": "愛電王",
           "bucket": "行程說明/交通",
-          "tags": []
+          "icon": "🚌",
+          "tags": [],
+          "area": "",
+          "time_of_day": "行程"
         },
         {
           "title": "",
           "note": "唐吉軻德、大創 京都四條通店、HANDS 京都店",
           "bucket": "行程說明/交通",
-          "tags": []
+          "icon": "🚌",
+          "tags": [],
+          "area": "",
+          "time_of_day": "行程"
         },
         {
           "title": "",
           "note": "松本清藥妝、SUNDRUG(尚都樂客)、ココカラファイン(Cocokara Fine)、OS DRUG、スギ藥局",
           "bucket": "行程說明/交通",
-          "tags": []
+          "icon": "🚌",
+          "tags": [],
+          "area": "",
+          "time_of_day": "行程"
         },
         {
           "title": "",
           "note": "迪士尼商店 京都四條河原町",
           "bucket": "行程說明/交通",
-          "tags": []
+          "icon": "🚌",
+          "tags": [],
+          "area": "河原町",
+          "time_of_day": "行程"
         },
         {
           "title": "",
           "note": "H&M京都店：全日本最大間",
           "bucket": "行程說明/交通",
-          "tags": []
+          "icon": "🚌",
+          "tags": [],
+          "area": "",
+          "time_of_day": "行程"
         },
         {
           "title": "",
           "note": "LAQUE 四条烏丸",
           "bucket": "行程說明/交通",
-          "tags": []
+          "icon": "🚌",
+          "tags": [],
+          "area": "",
+          "time_of_day": "行程"
         },
         {
           "title": "",
           "note": "業務超市：",
           "bucket": "行程說明/交通",
-          "tags": []
+          "icon": "🚌",
+          "tags": [],
+          "area": "",
+          "time_of_day": "行程"
         },
         {
           "title": "",
           "note": "shokudo days白色蛋包飯",
           "bucket": "行程說明/交通",
-          "tags": []
+          "icon": "🚌",
+          "tags": [],
+          "area": "",
+          "time_of_day": "行程"
         }
       ]
     },
@@ -494,167 +707,248 @@
           "title": "早餐",
           "note": "INODA COFFEE(京都車站porta地下街、八條口都有店，8點開店)",
           "bucket": "行程說明/交通",
-          "tags": []
+          "icon": "🚌",
+          "tags": [],
+          "area": "京都車站",
+          "time_of_day": "上午"
         },
         {
           "title": "",
           "note": "小川咖啡 京都站中央口店(早餐只有三種，奶油厚片吐司+蝦仁酪梨沙拉或火腿沙拉或沙拉)",
           "bucket": "行程說明/交通",
-          "tags": []
+          "icon": "🚌",
+          "tags": [],
+          "area": "",
+          "time_of_day": "上午"
         },
         {
           "title": "",
           "note": "Unir Kyoto Store (有日式早餐)",
           "bucket": "行程說明/交通",
-          "tags": []
+          "icon": "🚌",
+          "tags": [],
+          "area": "",
+          "time_of_day": "上午"
         },
         {
           "title": "",
           "note": "Ogawa Coffee 京都駅中央口店",
           "bucket": "行程說明/交通",
-          "tags": []
+          "icon": "🚌",
+          "tags": [],
+          "area": "",
+          "time_of_day": "行程"
         },
         {
           "title": "",
           "note": "レフ京都八条口 Breakfast (1700吃到飽)",
           "bucket": "行程說明/交通",
-          "tags": []
+          "icon": "🚌",
+          "tags": [],
+          "area": "",
+          "time_of_day": "行程"
         },
         {
           "title": "",
           "note": "星乃咖啡店 ASTY 京都店",
           "bucket": "行程說明/交通",
-          "tags": []
+          "icon": "🚌",
+          "tags": [],
+          "area": "",
+          "time_of_day": "行程"
         },
         {
           "title": "",
           "note": "YAYOI軒(彌生軒) 京都車站八條口店 日式定食",
           "bucket": "行程說明/交通",
-          "tags": []
+          "icon": "🚌",
+          "tags": [],
+          "area": "京都車站",
+          "time_of_day": "行程"
         },
         {
           "title": "",
           "note": "なか卵 京都八条口店(24小時營業)平價丼飯",
           "bucket": "行程說明/交通",
-          "tags": []
+          "icon": "🚌",
+          "tags": [],
+          "area": "",
+          "time_of_day": "行程"
         },
         {
           "title": "八條口搭近鐵電車京都線 約50分",
           "note": "「特急」車1280円35分鐘、「急行」車760円46分鐘到「近鐵奈良站」，走去奈良公園20分鐘，建議搭計程車",
           "bucket": "行程說明/交通",
-          "tags": []
+          "icon": "🚌",
+          "tags": [],
+          "area": "奈良",
+          "time_of_day": "行程"
         },
         {
           "title": "不建議搭JR",
           "note": "JR奈良站走到東大寺、奈良公園等景點走路大概要45分鐘",
           "bucket": "行程說明/交通",
-          "tags": []
+          "icon": "🚌",
+          "tags": [],
+          "area": "奈良",
+          "time_of_day": "行程"
         },
         {
           "title": "奈良車站",
           "note": "大佛布丁、中谷堂麻糬(電視冠軍搗麻糬冠軍)、中川政七商店、釜粋烏龍麵咖哩烏龍麵",
           "bucket": "行程說明/交通",
-          "tags": []
+          "icon": "🚌",
+          "tags": [],
+          "area": "奈良",
+          "time_of_day": "行程"
         },
         {
           "title": "NARA Rent-A-Cycle",
           "note": "租電動自行車 (2,000日元／天)",
           "bucket": "其他",
-          "tags": []
+          "icon": "📝",
+          "tags": [],
+          "area": "",
+          "time_of_day": "行程"
         },
         {
           "title": "奈良公園",
           "note": "",
           "bucket": "景點",
-          "tags": []
+          "icon": "📍",
+          "tags": [],
+          "area": "奈良",
+          "time_of_day": "行程"
         },
         {
           "title": "午餐",
           "note": "志津香釜飯、、",
           "bucket": "餐食",
-          "tags": []
+          "icon": "🍜",
+          "tags": [],
+          "area": "",
+          "time_of_day": "中午"
         },
         {
           "title": "東大寺",
           "note": "",
           "bucket": "景點",
+          "icon": "📍",
           "tags": [
             "🏯文化",
             "👨‍👩‍👧‍👦親子",
             "🕒可能排隊"
-          ]
+          ],
+          "area": "奈良",
+          "time_of_day": "行程"
         },
         {
           "title": "晚餐-京都車站商圈",
           "note": "京都車站Porta地下街(ABC MART、KOKUMIN藥妝店、無印良品、3Coins、PLAZA)",
           "bucket": "行程說明/交通",
-          "tags": []
+          "icon": "🚌",
+          "tags": [],
+          "area": "京都車站",
+          "time_of_day": "晚上"
         },
         {
           "title": "",
           "note": "the cube",
           "bucket": "行程說明/交通",
-          "tags": []
+          "icon": "🚌",
+          "tags": [],
+          "area": "",
+          "time_of_day": "行程"
         },
         {
           "title": "",
           "note": "京都車站中央口附近「おみやげ小路 京小町(伴手禮店)」",
           "bucket": "行程說明/交通",
-          "tags": []
+          "icon": "🚌",
+          "tags": [],
+          "area": "京都車站",
+          "time_of_day": "行程"
         },
         {
           "title": "",
           "note": "京都車站2樓南北自由通路「京名菓・名菜處」(伴手禮店)",
           "bucket": "行程說明/交通",
-          "tags": []
+          "icon": "🚌",
+          "tags": [],
+          "area": "京都車站",
+          "time_of_day": "行程"
         },
         {
           "title": "",
           "note": "京都車站後站ASTY ROAD(アスティ京都)，有Bellmart Kiosk(伴手禮店)、本家西尾八橋",
           "bucket": "行程說明/交通",
-          "tags": []
+          "icon": "🚌",
+          "tags": [],
+          "area": "京都車站",
+          "time_of_day": "行程"
         },
         {
           "title": "",
           "note": "伊勢丹京都百貨公司(B1丸久小山園、小倉山莊",
           "bucket": "行程說明/交通",
-          "tags": []
+          "icon": "🚌",
+          "tags": [],
+          "area": "",
+          "time_of_day": "行程"
         },
         {
           "title": "",
           "note": "京都塔美食街、辻利",
           "bucket": "行程說明/交通",
-          "tags": []
+          "icon": "🚌",
+          "tags": [],
+          "area": "",
+          "time_of_day": "行程"
         },
         {
           "title": "",
           "note": "後站飯店旁「AVANTI購物商場」(唐吉訶德、GU、ABC MART、Seria）",
           "bucket": "行程說明/交通",
-          "tags": []
+          "icon": "🚌",
+          "tags": [],
+          "area": "",
+          "time_of_day": "行程"
         },
         {
           "title": "",
           "note": "後站Aeon Mall (永旺夢樂城)，有無印良品、UNIQLO、GU、3COINS PLUS、WORKMAN、4樓美食街",
           "bucket": "行程說明/交通",
-          "tags": []
+          "icon": "🚌",
+          "tags": [],
+          "area": "",
+          "time_of_day": "行程"
         },
         {
           "title": "",
           "note": "Yodobashi友都八喜(連鎖的3C量販店)，有UNIQLO、GU、6樓美食街、B2樂比亞超市(只能現金付)，B1往北走轉東本願寺方向可到唐吉訶德(合利他命是京都最便宜)",
           "bucket": "行程說明/交通",
-          "tags": []
+          "icon": "🚌",
+          "tags": [],
+          "area": "",
+          "time_of_day": "行程"
         },
         {
           "title": "",
           "note": "近鐵名店街MIYAKOMICHI",
           "bucket": "行程說明/交通",
-          "tags": []
+          "icon": "🚌",
+          "tags": [],
+          "area": "",
+          "time_of_day": "行程"
         },
         {
           "title": "",
           "note": "車站中央口4樓烏丸小路廣場可以拍完整的京都塔",
           "bucket": "行程說明/交通",
-          "tags": []
+          "icon": "🚌",
+          "tags": [],
+          "area": "",
+          "time_of_day": "行程"
         }
       ]
     },
@@ -667,7 +961,10 @@
           "title": "早餐",
           "note": "",
           "bucket": "餐食",
-          "tags": []
+          "icon": "🍜",
+          "tags": [],
+          "area": "",
+          "time_of_day": "上午"
         }
       ]
     },
@@ -680,8 +977,8 @@
       "warnings": [
         {
           "level": "🕒",
-          "title": "可能排隊或需控時",
-          "detail": "建議線上購票或選擇開門時段入場，避免午間尖峰。"
+          "title": "可能排隊/需控時",
+          "detail": "建議開門時段入場或先買線上票；排隊>30分鐘啟用備案。"
         }
       ],
       "items": [
@@ -689,101 +986,149 @@
           "title": "京都車站",
           "note": "8點多搭車",
           "bucket": "行程說明/交通",
-          "tags": []
+          "icon": "🚌",
+          "tags": [],
+          "area": "京都車站",
+          "time_of_day": "行程"
         },
         {
           "title": "車程60分內",
           "note": "",
           "bucket": "行程說明/交通",
-          "tags": []
+          "icon": "🚌",
+          "tags": [],
+          "area": "",
+          "time_of_day": "行程"
         },
         {
           "title": "大阪難波GRIDS PREMIUM酒店",
           "note": "9點到",
           "bucket": "逛街/補給",
-          "tags": []
+          "icon": "🛍️",
+          "tags": [],
+          "area": "難波",
+          "time_of_day": "行程"
         },
         {
           "title": "車程15分內",
           "note": "",
           "bucket": "行程說明/交通",
-          "tags": []
+          "icon": "🚌",
+          "tags": [],
+          "area": "",
+          "time_of_day": "行程"
         },
         {
           "title": "梅田車站商圈",
           "note": "",
           "bucket": "行程說明/交通",
-          "tags": []
+          "icon": "🚌",
+          "tags": [],
+          "area": "梅田",
+          "time_of_day": "行程"
         },
         {
           "title": "走路11分",
           "note": "",
           "bucket": "其他",
-          "tags": []
+          "icon": "📝",
+          "tags": [],
+          "area": "",
+          "time_of_day": "行程"
         },
         {
           "title": "綱敷天神社（哥吉拉御守）",
           "note": "下午1點開賣",
           "bucket": "景點",
-          "tags": []
+          "icon": "📍",
+          "tags": [],
+          "area": "",
+          "time_of_day": "行程"
         },
         {
           "title": "走路10分鐘",
           "note": "",
           "bucket": "其他",
-          "tags": []
+          "icon": "📝",
+          "tags": [],
+          "area": "",
+          "time_of_day": "行程"
         },
         {
           "title": "TruffleBAKERY大阪店",
           "note": "木村拓哉最愛的麵包店",
           "bucket": "餐食",
-          "tags": []
+          "icon": "🍜",
+          "tags": [],
+          "area": "",
+          "time_of_day": "行程"
         },
         {
           "title": "車程40分內",
           "note": "",
           "bucket": "行程說明/交通",
-          "tags": []
+          "icon": "🚌",
+          "tags": [],
+          "area": "",
+          "time_of_day": "行程"
         },
         {
           "title": "大阪城(9：00-16：30)",
           "note": "御座船(成人1800円、學生900円)，9：30起售票，10點搭乘，遊覽大阪城護城河20分鐘，可用大阪周遊卡",
           "bucket": "今日重點",
+          "icon": "⭐",
           "tags": [
             "🏯文化",
             "🕒可能排隊",
             "🎟️門票"
-          ]
+          ],
+          "area": "大阪・大阪城公園",
+          "time_of_day": "行程"
         },
         {
           "title": "",
           "note": "天守閣(600円，15歲以下免費)，2樓可以租借戰國武將頭盔、陣羽織、小袖 (和服) 拍照(每人一次500円)，可用大阪周遊卡",
           "bucket": "行程說明/交通",
-          "tags": []
+          "icon": "🚌",
+          "tags": [],
+          "area": "",
+          "time_of_day": "行程"
         },
         {
           "title": "",
           "note": "小火車(成人400円、學生200円)",
           "bucket": "行程說明/交通",
-          "tags": []
+          "icon": "🚌",
+          "tags": [],
+          "area": "",
+          "time_of_day": "行程"
         },
         {
           "title": "車程40分內",
           "note": "",
           "bucket": "行程說明/交通",
-          "tags": []
+          "icon": "🚌",
+          "tags": [],
+          "area": "",
+          "time_of_day": "行程"
         },
         {
           "title": "梅田商圈晚餐",
           "note": "Hirokazuya Higashidoriひろかずや(大阪燒)",
           "bucket": "餐食",
-          "tags": []
+          "icon": "🍜",
+          "tags": [],
+          "area": "梅田",
+          "time_of_day": "晚上"
         },
         {
           "title": "",
           "note": "阪神百貨（loft買冰箱貼）",
           "bucket": "行程說明/交通",
-          "tags": []
+          "icon": "🚌",
+          "tags": [],
+          "area": "",
+          "time_of_day": "行程"
         }
       ]
     },
@@ -796,8 +1141,8 @@
       "warnings": [
         {
           "level": "🕒",
-          "title": "可能排隊或需控時",
-          "detail": "建議線上購票或選擇開門時段入場，避免午間尖峰。"
+          "title": "可能排隊/需控時",
+          "detail": "建議開門時段入場或先買線上票；排隊>30分鐘啟用備案。"
         }
       ],
       "items": [
@@ -805,119 +1150,173 @@
           "title": "早餐",
           "note": "",
           "bucket": "餐食",
-          "tags": []
+          "icon": "🍜",
+          "tags": [],
+          "area": "",
+          "time_of_day": "上午"
         },
         {
           "title": "難波車站",
           "note": "",
           "bucket": "行程說明/交通",
-          "tags": []
+          "icon": "🚌",
+          "tags": [],
+          "area": "難波",
+          "time_of_day": "行程"
         },
         {
           "title": "地鐵御堂筋線",
           "note": "到「本町站」，再轉搭中央線至「大阪港站」抵達",
           "bucket": "行程說明/交通",
-          "tags": []
+          "icon": "🚌",
+          "tags": [],
+          "area": "",
+          "time_of_day": "行程"
         },
         {
           "title": "樂高樂園探索中心",
           "note": "KLOOK門票353台幣，一定要有15歲以下兒童同行成人才能入場，這天不可用大阪周遊卡",
           "bucket": "景點",
+          "icon": "📍",
           "tags": [
             "🧱室內",
             "☔雨備",
             "👨‍👩‍👧‍👦親子",
             "🎟️門票"
-          ]
+          ],
+          "area": "大阪・天保山",
+          "time_of_day": "行程"
         },
         {
           "title": "海遊館(細看約3小時)",
           "note": "https://www.kaiyukan.com/info/hours/",
           "bucket": "景點",
+          "icon": "📍",
           "tags": [
             "🐟室內",
             "☔雨備",
             "👨‍👩‍👧‍👦親子",
             "🎟️門票"
-          ]
+          ],
+          "area": "大阪・天保山",
+          "time_of_day": "行程"
         },
         {
           "title": "",
           "note": "海豹 / 海獅餵食秀  https://zh-tw-61698.site-translation.com/program/feedingtime/",
           "bucket": "行程說明/交通",
-          "tags": []
+          "icon": "🚌",
+          "tags": [],
+          "area": "",
+          "time_of_day": "行程"
         },
         {
           "title": "",
           "note": "浮動票價，成人票大約落在 2,700～3,500円之間，直接在KKday / KLOOK上預訂，憑 QR code 掃碼入場",
           "bucket": "行程說明/交通",
-          "tags": []
+          "icon": "🚌",
+          "tags": [],
+          "area": "",
+          "time_of_day": "行程"
         },
         {
           "title": "午餐",
           "note": "海遊館旁天保山市場街（天保山マーケットプレース）、浪花美食街（なにわ食いしんぼ横丁，有會津屋章魚燒、自由軒咖哩、北極星蛋包飯)",
           "bucket": "餐食",
-          "tags": []
+          "icon": "🍜",
+          "tags": [],
+          "area": "天保山",
+          "time_of_day": "中午"
         },
         {
           "title": "老爺車博物館GLION MUSEUM",
           "note": "成人1300円、學生免費，可用大阪周遊卡",
           "bucket": "景點",
-          "tags": []
+          "icon": "📍",
+          "tags": [],
+          "area": "",
+          "time_of_day": "行程"
         },
         {
           "title": "搭乘聖瑪利亞號觀光船",
           "note": "白天遊覽(成人1800円、學生900円)，可用大阪周遊卡",
           "bucket": "行程說明/交通",
-          "tags": []
+          "icon": "🚌",
+          "tags": [],
+          "area": "",
+          "time_of_day": "行程"
         },
         {
           "title": "（備案）難波八阪神社",
           "note": "",
           "bucket": "備案/警示",
-          "tags": []
+          "icon": "🧩",
+          "tags": [],
+          "area": "難波",
+          "time_of_day": "行程"
         },
         {
           "title": "法善寺橫丁",
           "note": "私房料理街，天婦羅店「天山」",
           "bucket": "景點",
-          "tags": []
+          "icon": "📍",
+          "tags": [],
+          "area": "",
+          "time_of_day": "行程"
         },
         {
           "title": "心齋橋",
           "note": "os drug（オーエスドラッグ)藥妝",
           "bucket": "逛街/補給",
-          "tags": []
+          "icon": "🛍️",
+          "tags": [],
+          "area": "心齋橋",
+          "time_of_day": "行程"
         },
         {
           "title": "",
           "note": "「しゃぶ長 (Shabucho) 」壽喜燒（11:30開門，中午便宜，有豬肉，一般份量的和牛套餐，一人份4,800円)",
           "bucket": "行程說明/交通",
-          "tags": []
+          "icon": "🚌",
+          "tags": [],
+          "area": "",
+          "time_of_day": "行程"
         },
         {
           "title": "道頓堀",
           "note": "金久右衛門拉麵、龜王拉麵",
           "bucket": "餐食",
-          "tags": []
+          "icon": "🍜",
+          "tags": [],
+          "area": "道頓堀",
+          "time_of_day": "行程"
         },
         {
           "title": "",
           "note": "大起水産迴轉壽司",
           "bucket": "行程說明/交通",
-          "tags": []
+          "icon": "🚌",
+          "tags": [],
+          "area": "",
+          "time_of_day": "行程"
         },
         {
           "title": "道頓堀觀光船",
           "note": "成人2,000円、學生1,000円，可用大阪周遊卡",
           "bucket": "逛街/補給",
-          "tags": []
+          "icon": "🛍️",
+          "tags": [],
+          "area": "道頓堀",
+          "time_of_day": "行程"
         },
         {
           "title": "難波車站",
           "note": "",
           "bucket": "行程說明/交通",
-          "tags": []
+          "icon": "🚌",
+          "tags": [],
+          "area": "難波",
+          "time_of_day": "行程"
         }
       ]
     },
@@ -927,8 +1326,8 @@
       "warnings": [
         {
           "level": "⚠️",
-          "title": "步行/階梯較多",
-          "detail": "建議背巾或輕便推車，並預留休息點與點心。"
+          "title": "步行/階梯偏多",
+          "detail": "推車成本高；建議背巾或輕便推車，並預留休息與點心。"
         }
       ],
       "items": [
@@ -936,55 +1335,82 @@
           "title": "關西機場",
           "note": "10:55-13:10",
           "bucket": "其他",
-          "tags": []
+          "icon": "📝",
+          "tags": [],
+          "area": "關西機場",
+          "time_of_day": "行程"
         },
         {
           "title": "",
           "note": "京都觀光擁擠度地圖：",
           "bucket": "行程說明/交通",
-          "tags": []
+          "icon": "🚌",
+          "tags": [],
+          "area": "",
+          "time_of_day": "行程"
         },
         {
           "title": "",
           "note": "https://ja.kyoto.travel/comfort/gion-kiyomizu/",
           "bucket": "行程說明/交通",
-          "tags": []
+          "icon": "🚌",
+          "tags": [],
+          "area": "",
+          "time_of_day": "行程"
         },
         {
           "title": "",
           "note": "日本神社參拜流程：",
           "bucket": "行程說明/交通",
-          "tags": []
+          "icon": "🚌",
+          "tags": [],
+          "area": "",
+          "time_of_day": "行程"
         },
         {
           "title": "",
           "note": "先去水手舍洗手(用右手勺子取水 先洗左手->勺子換手在洗右手 ->最後用右手舀水倒入左手掌，嘴巴漱口吐掉)",
           "bucket": "行程說明/交通",
-          "tags": []
+          "icon": "🚌",
+          "tags": [],
+          "area": "",
+          "time_of_day": "行程"
         },
         {
           "title": "",
           "note": "香油錢投入賽錢箱 -> 搖鈴 -> 先深鞠躬兩次 -> 雙手合十拍手兩次合十，心中對神明傳達問候與感謝，有願望也一併祈禱 -> 最後再深鞠躬一次",
           "bucket": "行程說明/交通",
-          "tags": []
+          "icon": "🚌",
+          "tags": [],
+          "area": "",
+          "time_of_day": "行程"
         },
         {
           "title": "",
           "note": "(難波CITY B1 )Onitsuka Tiger Namba City：日本〒542-0076 Osaka, Chuo Ward, Namba, 5 Chome−1番60号 なんばCITY 本館 地下1階",
           "bucket": "行程說明/交通",
-          "tags": []
+          "icon": "🚌",
+          "tags": [],
+          "area": "難波",
+          "time_of_day": "行程"
         },
         {
           "title": "",
           "note": "Onitsuka Tiger 難波店：1 Chome-8-14 Dotonbori, Chuo Ward, Osaka, 542-0071日本",
           "bucket": "行程說明/交通",
-          "tags": []
+          "icon": "🚌",
+          "tags": [],
+          "area": "難波",
+          "time_of_day": "行程"
         },
         {
           "title": "準備2寸照片、證件影本備用（萬一護照遺失）",
           "note": "",
           "bucket": "備案/警示",
-          "tags": []
+          "icon": "🧩",
+          "tags": [],
+          "area": "",
+          "time_of_day": "行程"
         }
       ]
     }
@@ -1025,10 +1451,8 @@
         "⚠️階梯坡道",
         "🕒人潮高"
       ],
-      "time_suggest": "2–3 小時（清水舞台、音羽瀑布、周邊坂道）",
-      "kid_tip": "坂道與石階多，推車較吃力；建議背巾或輕便可收折推車。",
-      "ticket": "常見成人約 ¥400、兒童約 ¥200（以官方公告為準）。",
-      "best_time": "08:00 前或傍晚較不擁擠。"
+      "time_suggest": "2–3 小時",
+      "kid_tip": "坂道與石階多，推車較吃力；建議背巾或輕便推車。"
     },
     "伏見稻禾大社": {
       "category": "神社參拜",
@@ -1039,10 +1463,8 @@
         "⚠️階梯多",
         "🕒人潮高"
       ],
-      "time_suggest": "1.5–3 小時（走到奧社折返）",
-      "kid_tip": "鳥居步道多階梯；小孩腳力有限可到「奧社奉拜所」即折返。",
-      "ticket": "境內參拜免費（以官方公告為準）。",
-      "best_time": "清晨或傍晚人潮較少。"
+      "time_suggest": "1.5–3 小時",
+      "kid_tip": "鳥居步道多階梯；小孩可到「奧社奉拜所」折返。"
     },
     "東大寺": {
       "category": "文化古蹟",
@@ -1052,9 +1474,8 @@
         "👨‍👩‍👧‍👦親子",
         "🕒可能排隊"
       ],
-      "time_suggest": "1.5–2.5 小時（大佛殿+周邊）",
-      "kid_tip": "鹿公園餵鹿：餅乾收好，避免被追；小孩務必大人陪同。",
-      "ticket": "大佛殿常見成人 ¥800、6–12歲 ¥400（以官方公告為準）。"
+      "time_suggest": "1.5–2.5 小時",
+      "kid_tip": "餵鹿務必大人陪同；餅乾收好避免被追。"
     },
     "大阪城(9：00-16：30)": {
       "category": "文化古蹟",
@@ -1064,9 +1485,8 @@
         "🕒可能排隊",
         "🎟️門票"
       ],
-      "time_suggest": "2–3 小時（天守閣+公園）",
-      "kid_tip": "熱門時段排隊較久；親子建議一早入場或先買電子票。",
-      "ticket": "天守閣票價依公告為準。"
+      "time_suggest": "2–3 小時",
+      "kid_tip": "熱門時段排隊久；建議一早入場或先買票。"
     },
     "海遊館(細看約3小時)": {
       "category": "室內景點",
@@ -1077,9 +1497,8 @@
         "👨‍👩‍👧‍👦親子",
         "🎟️門票"
       ],
-      "time_suggest": "2.5–3.5 小時（含紀念品店/用餐）",
-      "kid_tip": "室內行程適合雨天/寒冷日；可與天保山周邊順遊。",
-      "ticket": "票價年齡分級，依官方票務為準，建議先買線上票。"
+      "time_suggest": "2.5–3.5 小時",
+      "kid_tip": "室內雨備首選；可與天保山周邊順遊。"
     },
     "樂高樂園探索中心": {
       "category": "室內景點",
@@ -1091,8 +1510,7 @@
         "🎟️門票"
       ],
       "time_suggest": "2–3 小時",
-      "kid_tip": "通常規定成人需攜帶 15 歲以下孩童入場（以官方公告為準）。",
-      "ticket": "票價依官方公告為準，線上常較優惠。"
+      "kid_tip": "常見規定成人需攜帶 15 歲以下孩童入場（以公告為準）。"
     }
   }
 }
