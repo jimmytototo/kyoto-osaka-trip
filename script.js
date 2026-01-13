@@ -21,14 +21,23 @@ function collectAreas(days){
   days.forEach(d=>{
     (d.items||[]).forEach(it=>{
       const a=(it.area||'').trim();
-      if (a) set.add(a);
+      if (a) set.add(shortArea(a));
     });
   });
   return Array.from(set);
 }
+function shortArea(a){
+  // normalize to short label
+  if (a.includes('京都')) return '京都';
+  if (a.includes('大阪')) return '大阪';
+  if (a.includes('奈良')) return '奈良';
+  if (a.includes('宇治')) return '宇治';
+  if (a.includes('KIX') || a.includes('關西')) return 'KIX';
+  if (a.length>10) return a.slice(0,10)+'…';
+  return a;
+}
 
 function renderOverview(days){
-  // tight days list
   const tight = document.getElementById('tightDays');
   const tightDays = days.filter(d => (d.warnings||[]).some(w => (w.title||'').includes('跨區')));
   tight.innerHTML='';
@@ -42,12 +51,10 @@ function renderOverview(days){
     });
   }
 
-  // summary viz
   const stats = computeStats(days);
   const box = document.getElementById('summaryViz');
   box.innerHTML = '';
   box.appendChild(vizCard('類別比例（整趟）', stats.total, stats.counts));
-  // per-day top 2
   const top = [...days].map(d=>({day:d.day_label, counts:bucketCounts(d.items||[])}));
   const busiest = top.sort((a,b)=>sumCounts(b.counts)-sumCounts(a.counts)).slice(0,2);
   busiest.forEach(x=>{
@@ -69,7 +76,6 @@ function vizCard(title, total, counts){
     </div>`;
   return card;
 }
-
 function barRow(label, n, total, cls){
   const pct = total ? Math.round((n/total)*100) : 0;
   return `<div class="barRow">
@@ -78,7 +84,6 @@ function barRow(label, n, total, cls){
     <div class="muted" style="width:42px;text-align:right">${pct}%</div>
   </div>`;
 }
-
 function computeStats(days){
   const counts={focus:0,spot:0,move:0,food:0,backup:0,other:0};
   let total=0;
@@ -89,7 +94,6 @@ function computeStats(days){
   });
   return {counts, total};
 }
-
 function bucketCounts(items){
   const c={focus:0,spot:0,move:0,food:0,backup:0,other:0};
   items.forEach(it=>{
@@ -114,26 +118,118 @@ function markerClass(bucket){
   return 'mOther';
 }
 
+function dayCoverEmoji(day, enrich){
+  for (const t of (day.highlights||[])){
+    if (enrich[t] && enrich[t].cover) return enrich[t].cover;
+  }
+  // fallback by area
+  const a = dominantArea(day.items||[]);
+  if (a.includes('京都')) return '🏯';
+  if (a.includes('奈良')) return '🦌';
+  if (a.includes('大阪')) return '🌆';
+  if (a.includes('KIX')) return '✈️';
+  return '🗺️';
+}
+function dominantArea(items){
+  const c=new Map();
+  items.forEach(it=>{
+    const a=shortArea(it.area||'');
+    if (!a) return;
+    c.set(a, (c.get(a)||0)+1);
+  });
+  let best='', bestN=0;
+  for (const [k,v] of c.entries()){
+    if (v>bestN){ bestN=v; best=k; }
+  }
+  return best;
+}
+
+function extractRoute(day){
+  const stops=[];
+  const push=(x)=>{
+    const s=shortArea(x||'').trim();
+    if (!s) return;
+    if (!stops.length || stops[stops.length-1]!==s) stops.push(s);
+  };
+  (day.items||[]).forEach(it=>{
+    // prefer explicit area; otherwise infer from title/note
+    if (it.area) push(it.area);
+    else{
+      const t=(it.title||'')+' '+(it.note||'');
+      ['KIX','京都','宇治','奈良','大阪','梅田','難波','天保山'].forEach(k=>{
+        if (t.includes(k)) push(k);
+      });
+    }
+  });
+  // keep compact
+  const uniq=[];
+  stops.forEach(s=>{ if (!uniq.includes(s)) uniq.push(s); });
+  return uniq.slice(0,6);
+}
+
+function routeSvg(stops){
+  // simple inline svg route
+  const w=520, h=74, pad=24;
+  const n=Math.max(stops.length, 2);
+  const dx=(w-2*pad)/(n-1);
+  const y=36;
+  let nodes='';
+  for (let i=0;i<n;i++){
+    const x=pad+i*dx;
+    const label=stops[i] || (i===0?'Start':'');
+    nodes += `
+      <circle cx="${x}" cy="${y}" r="9" fill="rgba(255,255,255,.06)" stroke="rgba(31,42,68,.95)" />
+      <circle cx="${x}" cy="${y}" r="4" fill="rgba(96,165,250,.95)" />
+      <text x="${x}" y="${y+28}" text-anchor="middle" font-size="12" fill="rgba(229,231,235,.95)">${escapeXml(label)}</text>
+    `;
+    if (i<n-1){
+      const x2=pad+(i+1)*dx;
+      nodes += `<line x1="${x+9}" y1="${y}" x2="${x2-9}" y2="${y}" stroke="rgba(31,42,68,.95)" stroke-width="2" />`;
+    }
+  }
+  return `
+  <svg viewBox="0 0 ${w} ${h}" width="100%" height="${h}" role="img" aria-label="當日路線示意">
+    <rect x="0" y="0" width="${w}" height="${h}" rx="14" fill="rgba(255,255,255,.02)" stroke="rgba(31,42,68,.9)"/>
+    ${nodes}
+  </svg>`;
+}
+
+function coverSvg(emoji, title, subtitle){
+  const w=520, h=120;
+  const t=escapeXml(title||'');
+  const s=escapeXml(subtitle||'');
+  const e=escapeXml(emoji||'🗺️');
+  return `
+  <svg viewBox="0 0 ${w} ${h}" width="100%" height="${h}" role="img" aria-label="每日封面插圖">
+    <defs>
+      <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="rgba(96,165,250,.35)"/>
+        <stop offset="1" stop-color="rgba(167,139,250,.25)"/>
+      </linearGradient>
+      <filter id="blur" x="-20%" y="-20%" width="140%" height="140%">
+        <feGaussianBlur stdDeviation="12"/>
+      </filter>
+    </defs>
+    <rect x="0" y="0" width="${w}" height="${h}" rx="18" fill="rgba(255,255,255,.02)" stroke="rgba(31,42,68,.9)"/>
+    <circle cx="420" cy="20" r="46" fill="url(#g)" filter="url(#blur)"/>
+    <circle cx="480" cy="98" r="36" fill="rgba(34,197,94,.18)" filter="url(#blur)"/>
+    <text x="18" y="44" font-size="34">${e}</text>
+    <text x="62" y="42" font-size="16" fill="rgba(229,231,235,.95)" font-weight="800">${t}</text>
+    <text x="62" y="68" font-size="12" fill="rgba(148,163,184,.95)">${s}</text>
+    <path d="M18 96 C 78 78, 160 122, 238 96 S 390 78, 500 98" fill="none" stroke="rgba(96,165,250,.45)" stroke-width="2"/>
+    <path d="M18 104 C 96 86, 172 126, 260 104 S 408 86, 500 108" fill="none" stroke="rgba(167,139,250,.35)" stroke-width="2"/>
+  </svg>`;
+}
+
 function renderDays(days, enrich){
   const box=document.getElementById('days');
   box.innerHTML='';
   const makeMapLink = (q) => `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(q)}`;
 
-  const buckets = [
-    {key:'今日重點', label:'今日重點（不建議刪）'},
-    {key:'景點', label:'順遊景點（視體力）'},
-    {key:'行程說明/交通', label:'交通/控時'},
-    {key:'餐食', label:'餐食'},
-    {key:'逛街/補給', label:'逛街/補給'},
-    {key:'備案/警示', label:'備案/警示'},
-    {key:'其他', label:'其他'}
-  ];
-
   days.forEach((d, idx)=>{
     const dayEl=document.createElement('div');
     dayEl.className='day';
 
-    // promote highlights
     const highlights=(d.highlights||[]).filter(Boolean);
     (d.items||[]).forEach(it=>{ if (highlights.includes(it.title)) it.bucket='今日重點'; });
 
@@ -155,6 +251,27 @@ function renderDays(days, enrich){
     const body=document.createElement('div');
     body.className='dayBody';
 
+    // cover + route visual
+    const domArea = dominantArea(d.items||[]);
+    const emoji = dayCoverEmoji(d, enrich);
+    const coverTitle = domArea ? `${domArea} 日` : '當日行程';
+    const coverSub = highlights.length ? `重點：${highlights.join('、')}` : '依體力彈性調整';
+    const cover=document.createElement('div');
+    cover.className='cover';
+    const route = extractRoute(d);
+    cover.innerHTML = `
+      <div class="coverLeft">
+        <div class="coverTitle"><span class="coverEmoji">${escapeHtml(emoji)}</span><strong>${escapeHtml(coverTitle)}</strong></div>
+        <div class="coverSub">${escapeHtml(coverSub)}</div>
+        <div class="routeViz">${routeSvg(route)}</div>
+        <div class="muted" style="margin-top:8px">路線示意：${escapeHtml(route.join(' → ') || '—')}</div>
+      </div>
+      <div class="coverRight">
+        ${coverSvg(emoji, d.day_label, coverSub)}
+      </div>
+    `;
+    body.appendChild(cover);
+
     // warnings
     const warnings=d.warnings||[];
     if (warnings.length){
@@ -169,7 +286,7 @@ function renderDays(days, enrich){
       body.appendChild(wr);
     }
 
-    // at-a-glance pills
+    // at-a-glance
     const bc=bucketCounts(d.items||[]);
     const glance=document.createElement('div');
     glance.className='dayAtAGlance';
@@ -182,13 +299,13 @@ function renderDays(days, enrich){
     `;
     body.appendChild(glance);
 
-    // timeline (by time_of_day groups)
+    // timeline
     const t=document.createElement('div');
     t.className='timeline';
-    const groups = groupByTimeOfDay(d.items||[]);
     t.innerHTML = `<div class="tHead"><strong>時間軸（親子化整理）</strong><span class="muted">先跑重點，再加順遊</span></div>`;
     const tBody=document.createElement('div');
     tBody.className='tBody';
+    const groups = groupByTimeOfDay(d.items||[]);
     ['上午','中午','下午','晚上','行程'].forEach(slot=>{
       const list = groups[slot] || [];
       list.forEach(it=>{
@@ -201,7 +318,7 @@ function renderDays(days, enrich){
               <span class="marker ${markerClass(it.bucket)}"></span>
               <div style="flex:1">
                 <div class="name">${escapeHtml(it.icon||'')} ${escapeHtml(it.title||'備註')}</div>
-                ${it.title ? `<div class="muted" style="margin-top:2px"><a href="${makeMapLink(it.title)}" target="_blank" rel="noopener">地圖</a>${it.area? ` · ${escapeHtml(it.area)}`:''}</div>` : ''}
+                ${it.title ? `<div class="muted" style="margin-top:2px"><a href="${makeMapLink(it.title)}" target="_blank" rel="noopener">地圖</a>${it.area? ` · ${escapeHtml(shortArea(it.area))}`:''}</div>` : ''}
               </div>
             </div>
             ${it.note ? `<div class="note">${escapeHtml(it.note)}</div>` : ''}
@@ -214,38 +331,6 @@ function renderDays(days, enrich){
     });
     t.appendChild(tBody);
     body.appendChild(t);
-
-    // classified sections (optional, still available but not dominant)
-    const sections=document.createElement('div');
-    sections.className='sections';
-    buckets.forEach(b=>{
-      const list=(d.items||[]).filter(it => (it.bucket||'')===b.key);
-      if (!list.length) return;
-      const sec=document.createElement('div');
-      sec.className='section';
-      sec.innerHTML = `
-        <div class="sectionHead">
-          <div class="sectionTitle">
-            <span class="marker ${markerClass(b.key)}"></span>
-            <strong>${escapeHtml(b.label)}</strong>
-          </div>
-          <span class="badge">${list.length} 項</span>
-        </div>
-        <div class="sectionBody">
-          ${list.map(it=>`
-            <div class="item">
-              <div class="itemTitle">
-                <span class="name">${escapeHtml(it.icon||'')} ${escapeHtml(it.title||'備註')}</span>
-                ${it.title ? ` · <a href="${makeMapLink(it.title)}" target="_blank" rel="noopener">地圖</a>` : ''}
-              </div>
-              ${it.note ? `<div class="note">${escapeHtml(it.note)}</div>` : ''}
-            </div>
-          `).join('')}
-        </div>
-      `;
-      sections.appendChild(sec);
-    });
-    body.appendChild(sections);
 
     dayEl.appendChild(head);
     dayEl.appendChild(body);
@@ -264,14 +349,12 @@ function groupByTimeOfDay(items){
     else if (t==='下午') g['下午'].push(it);
     else g['行程'].push(it);
   });
-  // heuristic: if no afternoon, keep empty
   return g;
 }
-
 function enrichBlock(e){
   const parts=[];
   if (e.category) parts.push(`<div class="muted">類型：${escapeHtml(e.category)}</div>`);
-  if (e.area) parts.push(`<div class="muted">區域：${escapeHtml(e.area)}</div>`);
+  if (e.area) parts.push(`<div class="muted">區域：${escapeHtml(shortArea(e.area))}</div>`);
   if (e.time_suggest) parts.push(`<div class="muted">建議停留：${escapeHtml(e.time_suggest)}</div>`);
   if (e.kid_tip) parts.push(`<div class="muted">親子提示：${escapeHtml(e.kid_tip)}</div>`);
   return `<div class="enrich"><strong>補充資訊</strong>${parts.join('')}</div>`;
@@ -326,7 +409,16 @@ function bindTabs(){
     });
   });
 }
+
 function escapeHtml(str){
+  return String(str||'')
+    .replaceAll('&','&amp;')
+    .replaceAll('<','&lt;')
+    .replaceAll('>','&gt;')
+    .replaceAll('"','&quot;')
+    .replaceAll("'",'&#039;');
+}
+function escapeXml(str){
   return String(str||'')
     .replaceAll('&','&amp;')
     .replaceAll('<','&lt;')
