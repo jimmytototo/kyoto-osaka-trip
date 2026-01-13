@@ -416,7 +416,7 @@ function escapeHtml(str){
     .replaceAll('<','&lt;')
     .replaceAll('>','&gt;')
     .replaceAll('"','&quot;')
-    .replaceAll("'",'&#039;');
+    .replaceAll("'","&#039;");
 }
 function escapeXml(str){
   return String(str||'')
@@ -424,7 +424,7 @@ function escapeXml(str){
     .replaceAll('<','&lt;')
     .replaceAll('>','&gt;')
     .replaceAll('"','&quot;')
-    .replaceAll("'",'&#039;');
+    .replaceAll("'","&#039;");
 }
 
 load().catch(err=>{
