@@ -316,7 +316,8 @@ function renderDays(days, enrich){
         row.innerHTML = `
           <div class="tTime">${escapeHtml(slot)}</div>
           <div class="tCard">
-            <div class="tTitle">
+            <div class="titleBlock">
+              <div class="tTitle">
               <span class="marker ${markerClass(it.bucket)}"></span>
               <div style="flex:1">
                 <div class="name">${escapeHtml(it.icon||'')} ${escapeHtml(it.title||'備註')}</div>
@@ -577,24 +578,68 @@ load().catch(err=>{
 function renderKids(days){
   const box=document.getElementById('kidTasks');
   if (!box) return;
-  const tasks=[];
+
+  const defaultTasks = [
+    {k:'📸 拍照任務', t:'拍一張「鳥居/城/寺」的照片，寫下你覺得最酷的地方。'},
+    {k:'🧠 小知識任務', t:'看到一個歷史/文化點，回飯店用 3 句話講給家人聽。'},
+    {k:'🗺️ 導航任務', t:'今天有一段路由你負責看地圖帶路。'},
+    {k:'🍜 美食任務', t:'自己選一餐或一個點心，說出你選它的理由。'}
+  ];
+
+  const cards = [];
   days.forEach(d=>{
-    const dayTasks=[];
-    (d.items||[]).forEach(it=>{
-      if ((it.kid_tags||[]).length){
-        if (it.kid_tags.includes("🧠 知識型")) dayTasks.push(`找出一個你覺得最厲害的知識：${it.title}`);
-        if (it.kid_tags.includes("🎮 體驗型")) dayTasks.push(`完成體驗並說出最好玩的一件事：${it.title}`);
-        if (it.kid_tags.includes("🛍️ 自主型")) dayTasks.push(`自己決定一樣想買或想吃的東西：${it.title}`);
+    const items = d.items || [];
+    const highlights = (d.highlights||[]).filter(Boolean);
+
+    // Build candidate tasks from items/tags/keywords
+    const tasks = [];
+    const add = (s)=>{ if (s && !tasks.includes(s)) tasks.push(s); };
+
+    // highlight-based tasks
+    highlights.slice(0,2).forEach(h=>{
+      add(`🎯 今日主線：完成「${h}」並用一句話說你最喜歡的部分。`);
+    });
+
+    items.forEach(it=>{
+      const title = it.title || '';
+      const note  = it.note || '';
+      const kidTags = it.kid_tags || [];
+      const all = `${title} ${note}`;
+
+      if (kidTags.includes('🧠 知識型') || /寺|神社|城|博物館|東大寺/.test(all)){
+        add(`🧠 小知識：在「${title||'今天的景點'}」找一個你學到的新名詞（回飯店分享）。`);
+      }
+      if (kidTags.includes('🎮 體驗型') || /海遊館|樂高|水族館|體驗|探索/.test(all)){
+        add(`🎮 體驗：在「${title||'體驗點'}」挑一個展區，說出最好玩的原因。`);
+      }
+      if (kidTags.includes('🛍️ 自主型') || /心齋橋|道頓堀|梅田|難波|購物|商圈|百貨/.test(all)){
+        add(`🛍️ 自主：在「${title||'商圈'}」你負責選一樣想買/想吃的東西（含預算）。`);
+      }
+      if (/步行|階|坂|鳥居/.test(all) || (it.tags||[]).join(' ').includes('🚶')){
+        add('🚶 體力：今天走路會多，自己記得補水 2 次並提醒家人休息。');
       }
     });
-    if (dayTasks.length){
-      tasks.push({day:d.day_label, tasks: dayTasks.slice(0,3)});
+
+    // ensure 2-3 tasks per day
+    const final = tasks.slice(0,3);
+    while (final.length < 2){
+      const dft = defaultTasks[(final.length + cards.length) % defaultTasks.length];
+      final.push(`${dft.k}：${dft.t}`);
     }
+
+    cards.push({day:d.day_label, tasks: final});
   });
-  box.innerHTML = tasks.map(t=>`
+
+  // Render
+  box.innerHTML = cards.map(c=>`
     <div class="card" style="margin-top:12px">
-      <h3>${escapeHtml(t.day)}</h3>
-      ${t.tasks.map(x=>`<label class="check"><input type="checkbox"> ${escapeHtml(x)}</label>`).join('')}
+      <h3>${escapeHtml(c.day)}</h3>
+      ${c.tasks.map(x=>`<label class="check"><input type="checkbox"> ${escapeHtml(x)}</label>`).join('')}
     </div>
   `).join('');
+
+  // If still empty (edge)
+  if (!cards.length){
+    box.innerHTML = '<p class="muted">目前沒有可產生的任務內容。請確認已上傳最新版 index.html / script.js / data.json。</p>';
+  }
 }
